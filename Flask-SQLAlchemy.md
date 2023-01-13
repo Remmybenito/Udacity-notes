@@ -9,7 +9,7 @@ database are mapped to class objects and attributes within SQLAlchmemy
 Import Flask for use in a python script and initialize it into a variable. Conventionally, the variable is called 'app'
 
 
-```markdown
+```python
 from flask import FLASK
 
 app = Flask(__name__)
