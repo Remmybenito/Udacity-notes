@@ -1,6 +1,6 @@
 # Flask-SQLAlchemy
 
-### Python SQL Toolkit:
+### Python SQL Toolkit
 SQLAlchemy is an end-to-end toolkit for working with relational databases without writing SQL. It offers an ORM (Object Relational Mapping Library), where tables and columns in a 
 database are mapped to class objects and attributes within SQLAlchmemy
 
