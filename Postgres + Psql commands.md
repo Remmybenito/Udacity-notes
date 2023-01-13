@@ -1,23 +1,52 @@
 # Postgres / Psql
 
-Pro-tip: look through the github diff between the previous release to see what's changed. The commit titles should give an outline of what's happened.
+### Postgres server commands - command line
+
+Start / stop / restart a Postgres server on local machine by directing to local installation \data folder 
 
 ```markdown
 pg_ctl -D "C:\Program Files\PostgreSQL\15\data" start
 ```
+```markdown
+pg_ctl -D "C:\Program Files\PostgreSQL\15\data" stop
+```
+```markdown
+pg_ctl -D "C:\Program Files\PostgreSQL\15\data" restart
+```
 
-### Upgrade Steps
+>Note: These commands will start the postgres server in which we can run psql commands with. The server must be started in the above folder on a local computer in order to function.
 
-- List out, as concretely as possible, any steps users have to take when they upgrade beyond just dumping the dependency.
-- Write pseudocode that highlights what code should change and how.
-- Call out if users are recommended to upgrade because of known problems with older releases.
-- Preferably, there's nothing here.
+### Psql commands - cmd
+
+>Note:  This will access the running server as user ‘postgres’. Password will be requested after this command is run. Default password is “password”
+
+List all databases on the server, their owners, and user access levels
+```markdown
+# \l
+
+Connect to a database named <dbname>
+# \c <dbname>
+
+Show database tables
+# \dt
+
+Describe table schema
+# \d <tablename>
+
+Quit psql, returning to terminal
+# \q
+
+Get help, see list of available commands
+# \?
+```
 
 ### Breaking Changes
 
 - A complete list of breaking changes (preferably there are none, unless this is a major version).
-
-> Based off https://palantir.quip.com/pzRwAVr1bpzf
+- List out, as concretely as possible, any steps users have to take when they upgrade beyond just dumping the dependency.
+- Write pseudocode that highlights what code should change and how.
+- Call out if users are recommended to upgrade because of known problems with older releases.
+- Preferably, there's nothing here.
 
 ### New Features
 
