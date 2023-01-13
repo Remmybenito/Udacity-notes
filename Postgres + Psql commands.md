@@ -1,6 +1,7 @@
-# Postgres / Psql
+# Postgres / Psql Notes
 
 ### Postgres server commands - command line
+We can start, stop, and restart a Postgres server on a local machine by using the follow commands that point to our installation of PostgreSQL>data folder.
 
 ```markdown
 pg_ctl -D "C:\Program Files\PostgreSQL\15\data" start
@@ -11,8 +12,6 @@ pg_ctl -D "C:\Program Files\PostgreSQL\15\data" stop
 ```markdown
 pg_ctl -D "C:\Program Files\PostgreSQL\15\data" restart
 ```
-
->Note: These commands will start the postgres server in which we can run psql commands with. The server must be started in the above folder on a local computer in order to function.
 
 ---
 
