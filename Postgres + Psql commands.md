@@ -2,8 +2,6 @@
 
 ### Postgres server commands - command line
 
-Start / stop / restart a Postgres server on local machine by directing to local installation \data folder 
-
 ```markdown
 pg_ctl -D "C:\Program Files\PostgreSQL\15\data" start
 ```
@@ -16,29 +14,31 @@ pg_ctl -D "C:\Program Files\PostgreSQL\15\data" restart
 
 >Note: These commands will start the postgres server in which we can run psql commands with. The server must be started in the above folder on a local computer in order to function.
 
+---
+
 ### Psql commands - cmd
 
->Note:  This will access the running server as user ‘postgres’. Password will be requested after this command is run. Default password is “password”
-
-List all databases on the server, their owners, and user access levels
 ```markdown
-# \l
+* \l
+List all databases on the server, their owners, and user access levels
 
+* \c <dbname>
 Connect to a database named <dbname>
-# \c <dbname>
 
+* \dt
 Show database tables
-# \dt
 
+* \d <tablename>
 Describe table schema
-# \d <tablename>
 
+* \q
 Quit psql, returning to terminal
-# \q
 
+* \?
 Get help, see list of available commands
-# \?
 ```
+
+>Note:  This will access the running server as user ‘postgres’. Password will be requested after this command is run. Default password is “password”
 
 ### Breaking Changes
 
