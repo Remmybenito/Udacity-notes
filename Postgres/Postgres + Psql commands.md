@@ -27,7 +27,7 @@ Once connected, we are then able to use the commands below to view our data.
 | Command | Notes |
 | :---: |-------|
 |`\l`   | List all databases on the server, their owners, and user access levels |
-|`\c` <dbname>  |Connect to a database named <dbname>
+|`\c <dbname>`  |Connect to a database named <dbname>
 |`\dt`  |Show database tables
 |`\d` <tablename>  |Describe table schema
 |`\q`   |Quit psql, returning to terminal

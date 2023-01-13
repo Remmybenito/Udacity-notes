@@ -14,3 +14,11 @@ from flask import FLASK
 
 app = Flask(__name__)
 ```
+
+We use the @ python decorator to set up Flask routing to '/', which is essentially a blank default home page route
+
+```python
+@app.route('/')
+def index():
+    return 'Hellow World!'
+```
