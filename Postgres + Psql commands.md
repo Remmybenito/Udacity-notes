@@ -17,7 +17,17 @@ pg_ctl -D "C:\Program Files\PostgreSQL\15\data" restart
 
 ### Psql commands - cmd
 
-```markdown
+| Command | Notes |
+|---------|-------|
+|\l       | List all databases on the server, their owners, and user access levels |
+
+```
+psql -U postgres
+```
+
+>Note:  This will access the running server as user ‘postgres’. Password will be requested after this command is run. Default password is “password”
+
+```postgresql
 * \l
 List all databases on the server, their owners, and user access levels
 
@@ -37,7 +47,6 @@ Quit psql, returning to terminal
 Get help, see list of available commands
 ```
 
->Note:  This will access the running server as user ‘postgres’. Password will be requested after this command is run. Default password is “password”
 
 ### Breaking Changes
 
