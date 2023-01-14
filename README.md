@@ -2,7 +2,7 @@
 # Postgres
 
 ### Installation
-Download Postgresql here: https://www.postgresql.org/download/
+Download Postgresql [here](https://www.postgresql.org/download/)
 
 ### Postgres server commands
 On Windows, we can start, stop, and restart a Postgres server on a local machine by using the follow commands that point to our installation of PostgreSQL>data folder. Use these within command line:
@@ -13,7 +13,7 @@ On Windows, we can start, stop, and restart a Postgres server on a local machine
 |`pg_ctl -D "C:\Program Files\PostgreSQL\15\data" stop`     |Stops Postgres server    |
 |`pg_ctl -D "C:\Program Files\PostgreSQL\15\data" restart`  |Restarts Postgres server |
 
->Instructions for starting and stopping a Postgres server here: https://tableplus.com/blog/2018/10/how-to-start-stop-restart-postgresql-server.html
+>Instructions for starting and stopping a Postgres server [here](https://tableplus.com/blog/2018/10/how-to-start-stop-restart-postgresql-server.html)
 
 # PSQL
 
@@ -68,8 +68,8 @@ You can install Flask SQL Alchemy using pip3 or pip if you haven't linked to pip
 ```
 pip3 install flask-sqlalchemy
 ```
-Flask documentation can be found here: https://flask.palletsprojects.com/en/2.2.x/
-FlaskSQLAlchemy documenation can be found here: https://flask-sqlalchemy.palletsprojects.com/en/3.0.x/
+Flask documentation can be found [here](https://flask.palletsprojects.com/en/2.2.x/)
+FlaskSQLAlchemy documenation can be found [here](https://flask-sqlalchemy.palletsprojects.com/en/3.0.x/)
 
 
 
@@ -87,8 +87,37 @@ We use the @ python decorator to set up Flask routing to '/', which is essential
 ```python
 @app.route('/')
 def index():
-    return 'Hellow World!'
+    return 'Hello World!'
 ```
+
+### Running the Flask app
+
+**Option 1**
+- Make sure you are in the directory that contains app.py
+- We run a flask app defined at app.py by running this line of code on one line
+- ``FLASK_APP=app.py FLASK_DEBUG=true flask run``
+- ``FLASK_APP`` must be set to the server file path with an equal sign in between. No spaces.``FLASK_APP = app.py`` will not work.
+- ``FLASK_DEBUG=true`` will enable debug mode which allows live reload
+- ``flask run`` actually executes the flask server code in the ``app.py`` file
+
+**Option 2**
+- Make sure you are in the directory that contains app.py
+- Do not enter any of the flask code mentioned in option 1
+- Simply include the following in your python file:
+
+```python
+from flask import Flask
+
+#your program here
+#your program here
+
+
+#always include this at the bottom of your code
+if __name__ == '__main__':
+   app.run(host="0.0.0.0")
+```
+
+
 
 
 ### Flask Migrations
