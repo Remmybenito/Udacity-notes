@@ -5,7 +5,7 @@
 Download Postgresql [here](https://www.postgresql.org/download/)
 
 ### Postgres server commands
-On Windows, we can start, stop, and restart a Postgres server on a local machine by using the follow commands that point to our installation of PostgreSQL>data folder. Use these within command line:
+On **Windows**, we can start, stop, and restart a Postgres server on a local machine by using the follow commands that point to our installation of PostgreSQL>data folder. Use these within command line:
 
 | Command          | Notes |
 |----              |-------|
@@ -66,7 +66,7 @@ We can then use SQL to manipulate the data within our created databases:
 You can install Flask SQL Alchemy using pip3 or pip if you haven't linked to pip3,
 
 ```
-pip3 install flask-sqlalchemy
+pip install flask-sqlalchemy
 ```
 Flask documentation can be found [here](https://flask.palletsprojects.com/en/2.2.x/)
 FlaskSQLAlchemy documenation can be found [here](https://flask-sqlalchemy.palletsprojects.com/en/3.0.x/)
@@ -108,17 +108,54 @@ def index():
 ```python
 from flask import Flask
 
-#your program here
-#your program here
+app = Flask(__name__)
 
+#Your program goes here
 
 #always include this at the bottom of your code
 if __name__ == '__main__':
    app.run(host="0.0.0.0")
 ```
 
+- Then, in the terminal, run the app by typing
+```
+python app.py
+```
 
+All together, our simple Hello World Flask app should look as follows:
 
+```python
+#imported Flask into python app
+from flask import Flask
+
+#initialized this app as a Flask application
+app = Flask(__name__)
+
+#created the index route/view
+@app.route('/')
+def index():
+    return 'Hello World!'
+
+#allows us to run in debug mode without bulky commands in terminal
+if __name__ == '__main__':
+   app.run(host="0.0.0.0")
+```
+
+### Connect to our Database in a Flask application
+1. Import the Flask-SQLAlchemy library.
+2. Set the app.config to our database:
+
+```python
+from flask import Flask
+# import SQLAlchemy into our python application
+from flask_sqlalchemy import SQLAlchemy
+
+app = Flask(__name__)
+# app.config will point to our database below
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:abc@localhost:5432/example'
+db = SQLAlchemy(app)
+```
+![Image](https://video.udacity-data.com/topher/2019/August/5d4df44e_database-connection-uri-parts/database-connection-uri-parts.png)
 
 ### Flask Migrations
 
@@ -190,4 +227,4 @@ Once the initial functionality of our Flask app is set up and connected with SQL
 |`ilike()`     ||
 
 
->Select statement cheat sheet: https://video.udacity-data.com/topher/2019/August/5d5a52af_query-cheat-sheet/query-cheat-sheet.pdf
+>Select statement [cheat sheet](https://video.udacity-data.com/topher/2019/August/5d5a52af_query-cheat-sheet/query-cheat-sheet.pdf)
