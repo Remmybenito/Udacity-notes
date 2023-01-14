@@ -2,10 +2,10 @@
 # Postgres
 
 ### Installation
-links to installation sites
+Download Postgresql here: https://www.postgresql.org/download/
 
 ### Postgres server commands
-We can start, stop, and restart a Postgres server on a local machine by using the follow commands that point to our installation of PostgreSQL>data folder. Use these within command line:
+On Windows, we can start, stop, and restart a Postgres server on a local machine by using the follow commands that point to our installation of PostgreSQL>data folder. Use these within command line:
 
 | Command          | Notes |
 |----              |-------|
@@ -13,7 +13,7 @@ We can start, stop, and restart a Postgres server on a local machine by using th
 |`pg_ctl -D "C:\Program Files\PostgreSQL\15\data" stop`     |Stops Postgres server    |
 |`pg_ctl -D "C:\Program Files\PostgreSQL\15\data" restart`  |Restarts Postgres server |
 
-
+>Instructions for starting and stopping a Postgres server here: https://tableplus.com/blog/2018/10/how-to-start-stop-restart-postgresql-server.html
 
 # PSQL
 
@@ -26,7 +26,7 @@ psql -U postgres
 >Note:  This will access the running server as user ‘postgres’. Password will be requested after this command is run. Default password is “password” or is set through postgres installation.
 
 
-### PSQL Commands
+### PSQL Command Line
 Once connected, we are then able to use the commands below to view our data.
 
 | Command          | Notes |
@@ -38,13 +38,43 @@ Once connected, we are then able to use the commands below to view our data.
 |`\q`              |Quit psql, returning to terminal
 |`\?`              |Get help, see list of available commands
 
+### Working with Databases (PSQL Command Line on Windows)
+Here are a few more commands that you can use to manipulate databases through PSQL:
+
+| Command                        | Notes |
+|    ---                         |-------|
+|`CREATE DATABASE <dbname>;`     |Creates a database called dbname on our PSQL server. (Remove the brackets<> when naming) |
+|`DROP DATABASE <dbname>;`       |Deletes database dbname|
+|`exit`                          |Exits PSQL command line|
+
+We can then use SQL to manipulate the data within our created databases:
+**example**
+
+
+``create table table1( id INTEGER PRIMARY KEY, description VARCHAR NOT NULL); ``<br />
+``\d table1`` <br />
+``INSERT INTO table1 (id, description) VALUES (1,"This is a thing");`` <br />
+``SELECT * FROM table1;`` <br />
+``SELECT * FROM table1 WHERE id = 1;`` <br />
+``SELECT * FROM table1 WHERE id = 2;`` <br />
+
+
 
 # FLASK
 
+### Installation
+You can install Flask SQL Alchemy using pip3 or pip if you haven't linked to pip3,
+
+```
+pip3 install flask-sqlalchemy
+```
+Flask documentation can be found here: https://flask.palletsprojects.com/en/2.2.x/
+FlaskSQLAlchemy documenation can be found here: https://flask-sqlalchemy.palletsprojects.com/en/3.0.x/
+
+
+
 ### Flask Basics
-
 Import Flask for use in a python script and initialize it into a variable. Conventionally, the variable is called 'app'
-
 
 ```python
 from flask import FLASK
