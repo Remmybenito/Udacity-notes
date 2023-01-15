@@ -108,11 +108,16 @@ In the context of our **To-do List example**, our HTML will look similar to the 
         <li>{{ d.description }}</li>
         {% endfor %}
     </ul>
+    
+<!-- To hide an error display message in case something happens to our data -->
 <div class = "hidden" id = "error" style="display:none;"> Something went wrong! </div>
 
+<!-- Script tag inserted -->
     <script>
         document.getElementById('form').onsubmit = function (e) {
            e.preventDefault();
+           
+           #fetch method
            fetch('/todos/create', {
                 method: 'POST',
                 body: JSON.stringify({
@@ -156,6 +161,51 @@ def create_todo():
   return jsonify({
     'description': todo.description
   })
+```
+---
+#### Error handling data requests 
+- Commits can succeed or fail. On fail, we want to rollback the session to avoid potential implicit commits done by the database on closing a connection.
+- Good practice is to close connections at the end of every session used in a controller, to return the connection back to the connection pool.
+
+We can implement error handling in a Flask app by using the following pattern:
+```python
+ import sys
+
+ try:
+   todo = Todo(description=description)
+   db.session.add(todo)
+   db.session.commit()
+ except:
+   db.session.rollback()
+   error=True
+   print(sys.exc_info())
+ finally:
+   db.session.close()
+```
+
+In the context of implementing within our To-do app, it would similar to the following:
+
+```python
+@app.route('/todos/create', methods=['POST'])
+def create_todo():   
+   body={}
+   error = False
+   try: 
+       description =  request.get_json()['description']
+       todo = Todo(description=description)
+       body['description'] = todo.description
+       db.session.add(todo)
+       db.session.commit()
+   except:        
+        error = True
+        db.session.rollback()
+        print(sys.exc_info())
+   finally:
+        db.session.close()           
+        if  error == True:
+            abort(400)
+        else:            
+            return jsonify(body)
 ```
 
 
